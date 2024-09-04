@@ -57,7 +57,7 @@
 		/// <returns>Least common multiple of u and v.</returns>
 		public static uint LeastCommonMultiple(uint u, uint v)
 		{
-			if (u != 0 && v != 0) {
+			if (u == 0 && v == 0) {
 				return 0;
 			}
 			return (uint)Math.Abs(u * v) / GreatestCommonDivisor(u, v);
