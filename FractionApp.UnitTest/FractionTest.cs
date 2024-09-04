@@ -7,18 +7,55 @@ namespace FractionApp.UnitTest
         {
         }
 
-        [Test]
-        public void Constructor_FractionThatCanBeReduced_ReducedToSmallestValue()
+        public void Fraction_Operators_CheckBooleanOperators()
         {
             // Arrange
-            Fraction expected = new(1,2);
+            Fraction expected = new(1, 2);
 
 
             // Act
-            Fraction actual = new(3 , 6);
+  
+            Fraction actualEqual = new(1,2);
+            Fraction actualLess = new(1,3);
+            Fraction actualMore = new(2,3);
+            
+
 
             // Assert
-            Assert.That(actual,Is.EqualTo(expected));
+            Assert.That(actualEqual, Is.EqualTo(expected));
+            Assert.That(actualLess, Is.LessThan(expected));
+            Assert.That(actualMore, Is.GreaterThan(expected));
+            Assert.That(actualEqual, Is.AtLeast(expected));
+            Assert.That(actualEqual, Is.AtMost(expected));
+        }
+
+        [Test]
+        public void Fraction_Operators_CheckMathOperators()
+        {
+            // Arrange
+            Fraction expectedPluss = new(1,2);
+
+            Fraction expectedMult = new(1, 16);
+
+            Fraction expectedDiv = new(1, 1);
+
+            Fraction expectedMinus = new(0, 1);
+
+
+            // Act
+            Fraction tmp1 = new(1 , 4);
+            Fraction tmp2 = new(1, 4);
+            Fraction actualPluss = tmp1 + tmp2;
+            Fraction actualMult = tmp1 * tmp2;
+            Fraction actualDiv = tmp1 / tmp2;
+            Fraction actualMinus = tmp1 - tmp2;
+
+
+            // Assert
+            Assert.That(actualPluss,Is.EqualTo(expectedPluss));
+            Assert.That(actualMult, Is.EqualTo(expectedMult));
+            Assert.That(actualDiv, Is.EqualTo(expectedDiv));
+            Assert.That(actualMinus, Is.EqualTo(expectedMinus));
         }
 
         [TestCase(-1,2,1,-2),
