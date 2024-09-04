@@ -6,8 +6,29 @@ namespace FractionApp.UnitTest
         public void Setup()
         {
         }
+        
+        [Test]
+        public void Fraction_Casting_CastingToDouble() {
 
-        public void Fraction_Operators_CheckBooleanOperators()
+            // Arrange
+            double expected = 1.0 / 3.0;
+
+            // Act
+            Fraction actual = new(1, 3);
+
+
+            // Assert
+
+            Assert.That(actual.ToDouble(), Is.EqualTo(expected));
+
+        
+        
+        
+        
+        }
+
+       [Test] 
+       public void Fraction_Operators_CheckBooleanOperators()
         {
             // Arrange
             Fraction expected = new(1, 2);
@@ -41,6 +62,8 @@ namespace FractionApp.UnitTest
 
             Fraction expectedMinus = new(0, 1);
 
+            Fraction expectedPower = new(1, 256);
+
 
             // Act
             Fraction tmp1 = new(1 , 4);
@@ -49,6 +72,7 @@ namespace FractionApp.UnitTest
             Fraction actualMult = tmp1 * tmp2;
             Fraction actualDiv = tmp1 / tmp2;
             Fraction actualMinus = tmp1 - tmp2;
+            Fraction actualPower = tmp1^3;
 
 
             // Assert
