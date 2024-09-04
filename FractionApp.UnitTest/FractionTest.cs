@@ -21,19 +21,23 @@ namespace FractionApp.UnitTest
             Assert.That(actual,Is.EqualTo(expected));
         }
 
-        [Test]
-        public void Constructor_FractionThatCanBeReduced_ReducedToSmallestValue_Wrong()
+        [TestCase(-1,2,1,-2),
+         TestCase(1,2,2,4),
+          TestCase(0,1)]
+        public void Constructor_Initialization_CorrectInitialization( int exp1,int exp2, int num11=0, int num12=0)
         {
-            // Arrange
-            Fraction expected = new(1, 2);
+            // Arrange       
+            Fraction expected = new(exp1, exp2);
 
 
             // Act
-            Fraction actual = new(3, 5);
+            Fraction actual = new();
+            if (!(num11 == 0 && num12 == 0)) { actual = new(num11, num12); }
+            
 
             // Assert
-            Assert.That(actual, Is.Not.EqualTo(expected));
+            Assert.That(actual, Is.EqualTo(expected));
         }
+    }
 
     }
-}
